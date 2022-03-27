@@ -920,54 +920,6 @@
                 <version>3.0.0-M1</version>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>extra-enforcer-rules</artifactId>
-                        <version>1.3</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>enforce-bytecode-version</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <enforceBytecodeVersion>
-                                    <maxJdkVersion>1.7</maxJdkVersion>
-                                    <excludes>
-                                        <!-- guava includes backports for Java 7 compatibility -->
-                                        <exclude>com.google.guava:guava</exclude>
-                                    </excludes>
-                                    <message>Dependencies shouldn't require Java 8+.</message>
-                                </enforceBytecodeVersion>
-                            </rules>
-                            <fail>warn</fail>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>enforce-jdk-version</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireJavaVersion>
-                                    <version>1.7</version>
-                                    <message>Benchmark is currently written to support Java 7 and 8.</message>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- used by some of the scripts. This forces the plugin to be downloaded, so it doesn't need to when the script runs. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
